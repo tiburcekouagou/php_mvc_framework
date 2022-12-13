@@ -4,6 +4,8 @@ namespace App\Controllers\Admin;
 
 class UsersController {
   public function index() {
-    echo "Hello from index() function from admins";
+    echo "<p>Paramètres de la chaîne de requête <pre>" .
+      htmlspecialchars(print_r($_GET, true))
+      . "</pre></p>";
   }
 }

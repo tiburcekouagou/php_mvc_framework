@@ -86,8 +86,8 @@ class Router {
      * @return void
      */
     public function dispatch($url) {
+        $url = $this->removeQueryStringVariables($url);
         if ($this->match($url)) {
-            var_dump($this->params);
             $controller = $this->params["controller"];
             $controller = $this->convertToStudlyCase($controller) . "Controller";
             // $controller = "App\Controllers\\" . $controller;
@@ -143,5 +143,24 @@ class Router {
         }
 
         return $namespace;
+    }
+
+    /**
+     * Retire les variables associées à la chaîne de requête
+     * 
+     * @param string $url
+     * @return string
+     */
+    protected function removeQueryStringVariables($url) {
+        if ($url !== "") {
+            $parts = explode("&", $url, 2);
+
+            if (strpos($parts[0], "=") === false) {
+                $url = $parts[0];
+            } else {
+                $url = "";
+            }
+        }
+        return $url;
     }
 }
