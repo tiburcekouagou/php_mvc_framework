@@ -69,7 +69,60 @@
         return $this->routes;
     }
 
+    /**
+     * Retourne les paramètres de la route actuelle
+     *
+     * @return array
+     */
     public function getParams() {
         return $this->params;
+    }
+
+    /**
+     * Dispatche la route en essayant d'exécuter la méthode appropriée
+     *
+     * @param string $url L'URL à dispatcher
+     * @return void
+     */
+    public function dispatch($url) {
+        if($this->match($url)) {
+            $controller = $this->params["controller"];
+            $controller = $this->convertToStudlyCase($controller) . "Controller";
+
+            if (class_exists($controller)) {
+                $controller_object = new $controller($this->params);
+
+                $action = $this->convertToCamelCase($this->params["action"]);
+                if (is_callable([$controller_object, $action])) {
+                    $controller_object->$action();
+                } else {
+                    echo "Méthode $action() inexistante dans le controlleur $controller";
+                }
+            } else {
+                echo "Le controller de la classe $controller n'existe pas.";
+            }
+        } else {
+            echo "Aucune route ne correspond à \"$url\"";
+        }
+    }
+
+    /**
+     * Convertis une chaine de caractères en PascalCase|StudlyCase
+     *
+     * @param string $str
+     * @return string
+     */
+    private function convertToStudlyCase($str) {
+        return str_replace(" ", "", ucwords(str_replace("-", " ", $str)));
+    }
+
+    /**
+     * Convertis une chaîne de caractères en camelCase
+     *
+     * @param string $str
+     * @return string
+     */
+    private function convertToCamelCase($str) {
+        return lcfirst($this->convertToStudlyCase($str));
     }
  }
