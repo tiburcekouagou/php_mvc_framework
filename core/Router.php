@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 /**
  * Controlleur Frontal
  * PHP version 8.1
@@ -88,7 +90,8 @@
         if($this->match($url)) {
             $controller = $this->params["controller"];
             $controller = $this->convertToStudlyCase($controller) . "Controller";
-
+            $controller = "App\Controllers\\" . $controller;
+            
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);
 

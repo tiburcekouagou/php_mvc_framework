@@ -1,7 +1,16 @@
 <?php
 
-class PostsController {
-    public function index() {
+namespace App\Controllers;
+
+class PostsController
+{
+    public function index()
+    {
         echo "Hello depuis la fonction index() du controlleur PostsControlleur";
+    }
+
+    public function addNew()
+    {
+        echo "Hello depuis la fonction addNew() du controlleur PostsControlleur";
     }
 }
