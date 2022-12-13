@@ -87,10 +87,13 @@ class Router {
      */
     public function dispatch($url) {
         if ($this->match($url)) {
+            var_dump($this->params);
             $controller = $this->params["controller"];
             $controller = $this->convertToStudlyCase($controller) . "Controller";
-            $controller = "App\Controllers\\" . $controller;
-
+            // $controller = "App\Controllers\\" . $controller;
+            echo "controller before ==> $controller<br>";
+            $controller = $this->getNamespace() . $controller;
+            echo "controller ==> $controller<br>";
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);
 
@@ -126,5 +129,19 @@ class Router {
      */
     private function convertToCamelCase($str) {
         return lcfirst($this->convertToStudlyCase($str));
+    }
+
+    /**
+     * Récupérer le nom d'utilisateur dans la liste des  paramètres s'il y en a
+     * 
+     * @return string
+     */
+    protected function getNamespace() {
+        $namespace = "App\Controllers\\";
+        if (array_key_exists("namespace", $this->params)) {
+            $namespace .= $this->params["namespace"] . "\\";
+        }
+
+        return $namespace;
     }
 }
