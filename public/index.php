@@ -1,6 +1,8 @@
 <?php
 
 require "../core/Router.php";
+require "../app/controllers/HomeController.php";
+require "../app/controllers/PostsController.php";
 
 $router = new Router();
 $url = $_SERVER["QUERY_STRING"];
@@ -16,8 +18,4 @@ $router->add("{controller}/{id:\d+}/{action}");
 var_dump($router->getRoutes());
 
 
-if ($router->match($url)) {
-    var_dump($router->getParams());
-} else {
-    echo "Aucune route correspondant à \"$url\"";
-}
+$router->dispatch($url);
