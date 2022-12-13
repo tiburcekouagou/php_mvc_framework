@@ -32,6 +32,8 @@
         $route = preg_replace("/\//", "\\\/", $url);
         // transformer les {...} en regex (?<name>[a-z-])
         $route = preg_replace("/\{([a-z-]+)\}/i", "(?<\\1>[a-z-]+)", $route);
+        // ajout de paramètres optionnels
+        $route = preg_replace("/\{([a-z-]+):([^\}]+)\}/", "(?<\\1>\\2)", $route);
         // ajouter les délimiteurs /^$/
         $route = "/^" . $route . "$/";
         $this->routes[$route] = $params;
