@@ -27,8 +27,14 @@
      * @param array $params Paramètres de la route
      * @return void
      */
-    public function add($url, $params) {
-        $this->routes[$url] = $params;
+    public function add($url, $params = []) {
+        // transformer les slashes (/) en backslashes (\)
+        $route = preg_replace("/\//", "\\\/", $url);
+        // transformer les {...} en regex (?<name>[a-z-])
+        $route = preg_replace("/\{([a-z-]+)\}/i", "(?<\\1>[a-z-]+)", $route);
+        // ajouter les délimiteurs /^$/
+        $route = "/^" . $route . "$/";
+        $this->routes[$route] = $params;
     }
     
     /**
@@ -38,8 +44,14 @@
      */
     public function match($url) {
         foreach($this->getRoutes() as $route => $param) {
-            if ($route === $url) {
-                $this->params[$url] = $param;
+            if (preg_match($route, $url, $matches)) {
+                $params = [];
+                foreach($matches as $key => $match) {
+                    if (is_string($key)) {
+                        $params[$key] = $match;
+                    }
+                }
+                $this->params = $params;
                 return true;
             }
         }

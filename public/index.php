@@ -9,6 +9,7 @@ echo "La chaine de requête est \"$url\"";
 $router->add("", ["controller" => "Home", "action" => "index"]);
 $router->add("posts", ["controller" => "Posts", "action" => "index"]);
 $router->add("posts/show", ["controller" => "Posts", "action" => "show"]);
+$router->add("{controller}/{action}");
 
 var_dump($router->getRoutes());
 
