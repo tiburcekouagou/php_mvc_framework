@@ -3,4 +3,5 @@
 require "../core/Router.php";
 
 $router = new Router();
-echo "\$router appartient à la classe \"" . get_class($router) . "\"";
+$url = $_SERVER["QUERY_STRING"];
+echo "La chaine de requête est \"$url\"";
