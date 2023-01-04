@@ -44,12 +44,12 @@ namespace Core;
     /**
      * Permet de faire correspondre la chaîne de requête
      *@param string $url La chaine de requête à faire correspondre
-     * @return boolean
+     * @return bool
      */
     public function match($url) {
-        foreach($this->getRoutes() as $route => $param) {
+        foreach($this->getRoutes() as $route => $params) {
             if (preg_match($route, $url, $matches)) {
-                $params = [];
+                // $params = [];
                 foreach($matches as $key => $match) {
                     if (is_string($key)) {
                         $params[$key] = $match;

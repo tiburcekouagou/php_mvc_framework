@@ -13,4 +13,8 @@ class PostsController
     {
         echo "Hello depuis la fonction addNew() du controlleur PostsControlleur";
     }
+
+    public function show() {
+        echo "Hello depuis la fonction show() du controlleur PostControlleur";
+    }
 }

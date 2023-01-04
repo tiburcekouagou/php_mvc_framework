@@ -9,18 +9,12 @@ spl_autoload_register(function ($className) {
     }
 });
 
-$router = new Core\Router();
+require dirname(__DIR__) . "/routes/web.php";
+
+var_dump($router->getRoutes());
 $url = $_SERVER["QUERY_STRING"];
 echo "La chaine de requête est \"$url\"";
 
-$router->add("", ["controller" => "Home", "action" => "index"]);
-$router->add("posts", ["controller" => "Posts", "action" => "index"]);
-$router->add("posts/show", ["controller" => "Posts", "action" => "show"]);
-$router->add("{controller}/{action}");
-$router->add("admin/{controller}/{action}");
-$router->add("{controller}/{id:\d+}/{action}");
-
-var_dump($router->getRoutes());
-
+if ($router->match($url)) var_dump($router->getParams());
 
 $router->dispatch($url);
