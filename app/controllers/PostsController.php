@@ -2,11 +2,14 @@
 
 namespace App\Controllers;
 
-class PostsController
+
+class PostsController extends \Core\Controller
 {
     public function index()
     {
+        echo "<pre>";
         echo "Hello depuis la fonction index() du controlleur PostsControlleur";
+        var_dump($this->route_params);
     }
 
     public function addNew()

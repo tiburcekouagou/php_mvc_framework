@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class HomeController {
+class HomeController extends \Core\Controller {
     public function index() {
         echo "Hello depuis la fonction index() du controlleur HomeControlleur";
     }

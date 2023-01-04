@@ -11,10 +11,7 @@ spl_autoload_register(function ($className) {
 
 require dirname(__DIR__) . "/routes/web.php";
 
-var_dump($router->getRoutes());
+// url de la requête
 $url = $_SERVER["QUERY_STRING"];
-echo "La chaine de requête est \"$url\"";
-
-if ($router->match($url)) var_dump($router->getParams());
 
 $router->dispatch($url);

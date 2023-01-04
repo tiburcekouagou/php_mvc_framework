@@ -96,6 +96,7 @@ namespace Core;
             $controller = "App\Controllers\\" . $controller;
             
             if (class_exists($controller)) {
+                // instancier le controlleur et lui passer les paramètres
                 $controller_object = new $controller($this->params);
 
                 $action = $this->convertToCamelCase($this->params["action"]);
