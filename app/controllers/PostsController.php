@@ -2,14 +2,20 @@
 
 namespace App\Controllers;
 
+use Core\View;
+
 
 class PostsController extends \Core\Controller
 {
     public function index()
     {
-        echo "<pre>";
-        echo "Hello depuis la fonction index() du controlleur PostsControlleur";
-        var_dump($this->route_params);
+        View::render("Posts/index.phtml", [
+            "posts" => [
+                "Titre de l'article 1",
+                "Titre de l'article 2",
+                "Titre de l'article 3"
+            ]
+        ]);
     }
 
     public function addNew()
