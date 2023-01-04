@@ -87,6 +87,9 @@ namespace Core;
      * @return void
      */
     public function dispatch($url) {
+        # retirer la chaîne de requête
+        $url = $this->removeQueryStringVariables($url);
+        
         if($this->match($url)) {
             $controller = $this->params["controller"];
             $controller = $this->convertToStudlyCase($controller) . "Controller";
@@ -127,5 +130,26 @@ namespace Core;
      */
     private function convertToCamelCase($str) {
         return lcfirst($this->convertToStudlyCase($str));
+    }
+
+    /**
+     * Fonction qui retire la chaine de requête d'une url pour retourn la route uniquement
+     * @param string $url - URL à parser
+     * @return string
+     */
+    protected function removeQueryStringVariables($url) {
+        if ($url !== '') { # si l'url n'est pas vide
+            # séparer l'url en tableau de longeur 2 (nous obtenons ainsi la route 
+            # à gauche, puis la chaine de requête à droite)
+            $parts = explode('&', $url, 2); 
+
+            if(strpos($parts[0], '=') === false) {
+                $url = $parts[0];
+            } else {
+                $url = '';
+            }
+        }
+
+        return $url;
     }
  }
