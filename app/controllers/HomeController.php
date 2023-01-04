@@ -7,7 +7,10 @@ use Core\View;
 class HomeController extends \Core\Controller {
     public function indexAction() {
         echo "Hello depuis la fonction index() du controlleur HomeControlleur";
-        View::render("Home/index.php");
+        View::render("Home/index.phtml", [
+            "name" => "John",
+            "couleurs" => ["vert", "jaune", "rouge"]
+        ]);
     }
 
 }
