@@ -53,7 +53,7 @@ abstract class Controller
          */
         protected function before()
         {
-                echo "### before### ";
+                // echo "### before### ";
                 return true;
         }
 
@@ -64,7 +64,7 @@ abstract class Controller
          */
         protected function after()
         {
-                echo "### after### ";
+                // echo "### after### ";
                 return true;
         }
 }
