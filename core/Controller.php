@@ -6,8 +6,7 @@ namespace Core;
  * Controlleur de base
  * PHP version 5.4
  */
-abstract class Controller
-{
+abstract class Controller {
         /**
          * Les paramètres de la route correspondante
          * @var array
@@ -18,8 +17,7 @@ abstract class Controller
          * Constructeur de la classe
          * @param array $route_params
          */
-        public function __construct($route_params)
-        {
+        public function __construct($route_params) {
                 $this->route_params = $route_params;
         }
 
@@ -32,8 +30,7 @@ abstract class Controller
          * 
          * @return void
          */
-        public function __call($name, $args)
-        {
+        public function __call($name, $args) {
                 $method = $name . "Action";
 
                 if (method_exists($this, $method)) {
@@ -42,7 +39,8 @@ abstract class Controller
                                 $this->after();
                         }
                 } else {
-                        echo "La méthode $method est inexistante dans le controlleur " . get_class($this);
+                        // echo "La méthode $method est inexistante dans le controlleur " . get_class($this);
+                        throw new \Exception("La méthode $method est inexistante dans le controlleur " . get_class($this));
                 }
         }
 
@@ -51,8 +49,7 @@ abstract class Controller
          * 
          * @return bool
          */
-        protected function before()
-        {
+        protected function before() {
                 // echo "### before### ";
                 return true;
         }
@@ -62,8 +59,7 @@ abstract class Controller
          * 
          * @return bool
          */
-        protected function after()
-        {
+        protected function after() {
                 // echo "### after### ";
                 return true;
         }

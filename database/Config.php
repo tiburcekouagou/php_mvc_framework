@@ -27,5 +27,5 @@ class Config {
    * Mot de la passe de la BDD
    * @var string
    */
-  const DB_PASSWORD = '';
+  const DB_PASSWORD = 'root';
 }

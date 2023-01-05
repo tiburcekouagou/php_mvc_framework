@@ -6,7 +6,7 @@ namespace Core;
  * Controlleur Frontal
  * PHP version 8.1
  */
- class Router {
+class Router {
     /**
      * Routes de l'application
      * (Table des routes)
@@ -40,17 +40,17 @@ namespace Core;
         $route = "/^" . $route . "$/";
         $this->routes[$route] = $params;
     }
-    
+
     /**
      * Permet de faire correspondre la chaîne de requête
      *@param string $url La chaine de requête à faire correspondre
      * @return bool
      */
     public function match($url) {
-        foreach($this->getRoutes() as $route => $params) {
+        foreach ($this->getRoutes() as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 // $params = [];
-                foreach($matches as $key => $match) {
+                foreach ($matches as $key => $match) {
                     if (is_string($key)) {
                         $params[$key] = $match;
                     }
@@ -89,13 +89,13 @@ namespace Core;
     public function dispatch($url) {
         # retirer la chaîne de requête
         $url = $this->removeQueryStringVariables($url);
-        
-        if($this->match($url)) {
+
+        if ($this->match($url)) {
             $controller = $this->params["controller"];
             $controller = $this->convertToStudlyCase($controller) . "Controller";
             // $controller = "App\Controllers\\" . $controller;
             $controller = $this->getNamespace() . $controller;
-            
+
             if (class_exists($controller)) {
                 // instancier le controlleur et lui passer les paramètres
                 $controller_object = new $controller($this->params);
@@ -104,13 +104,16 @@ namespace Core;
                 if (is_callable([$controller_object, $action])) {
                     $controller_object->$action();
                 } else {
-                    echo "Méthode $action() inexistante dans le controlleur $controller";
+                    // echo "Méthode $action() inexistante dans le controlleur $controller";
+                    throw new \Exception("Méthode $action() inexistante dans le controlleur $controller");
                 }
             } else {
-                echo "Le controller de la classe $controller n'existe pas.";
+                // echo "Le controller de la classe $controller n'existe pas.";
+                throw new \Exception("Le controller de la classe $controller n'existe pas.");
             }
         } else {
-            echo "Aucune route ne correspond à \"$url\"";
+            // echo "Aucune route ne correspond à \"$url\"";
+            throw new \Exception("Aucune route ne correspond à \"$url\"");
         }
     }
 
@@ -143,9 +146,9 @@ namespace Core;
         if ($url !== '') { # si l'url n'est pas vide
             # séparer l'url en tableau de longeur 2 (nous obtenons ainsi la route 
             # à gauche, puis la chaine de requête à droite)
-            $parts = explode('&', $url, 2); 
+            $parts = explode('&', $url, 2);
 
-            if(strpos($parts[0], '=') === false) {
+            if (strpos($parts[0], '=') === false) {
                 $url = $parts[0];
             } else {
                 $url = '';
@@ -164,4 +167,4 @@ namespace Core;
 
         return $namespace;
     }
- }
+}
