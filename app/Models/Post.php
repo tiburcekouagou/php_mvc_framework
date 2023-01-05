@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
-use PDO;
-use PDOException;
+use Core\Model;
 
-class Post
+
+class Post extends Model
 {
+  /**
+   * Récupérer tous les articles dans la BDD
+   * @return mixed
+   */
   public static function getAll()
   {
     $host = "localhost";
@@ -15,12 +19,12 @@ class Post
     $password = "";
 
     try {
-      $db = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8;", $username, $password);
+      $db = new \PDO("mysql:host=$host;dbname=$db_name;charset=utf8;", $username, $password);
       $stmt = $db->query('SELECT id, title, content FROM posts ORDER BY created_at');
-      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $results = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
       return $results;
-    } catch(PDOException $e) {
+    } catch(\PDOException $e) {
       echo $e->getMessage();
     }
   }
