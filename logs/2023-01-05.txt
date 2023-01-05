@@ -34,3 +34,11 @@ Stack trace: #0 C:\laragon\www\php_mvc_framework\app\controllers\PostsController
 #2 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index')
 #3 {main}
 Thrown in 'C:\laragon\www\php_mvc_framework\core\View.php'on line 27
+[05-Jan-2023 13:03:38 UTC] Fatal error with message 'Aucune route ne correspond à "posts/index/sdf"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index/sdf')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 13:05:01 UTC] Fatal error with message 'Aucune route ne correspond à "sdf"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('sdf')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116

@@ -56,9 +56,11 @@ class Error {
       error_log($message);
       // echo "<h1>Une erreur est survenue</h1>";
       if ($code === 404) {
-        echo "<h1>Page non trouvée</h1>";
+        // echo "<h1>Page non trouvée</h1>";
+        View::render("errors/404.phtml");
       } else {
-        echo "<h1>Une erreur est survenue</h1>";
+        // echo "<h1>Une erreur est survenue</h1>";
+        View::render("errors/500.phtml");
       }
     }
   }
