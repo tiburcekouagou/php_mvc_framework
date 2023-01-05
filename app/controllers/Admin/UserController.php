@@ -6,4 +6,5 @@ class UserController {
   public function index() {
     echo "admin index";
   }
+
 }
