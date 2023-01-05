@@ -3,18 +3,18 @@
 namespace App\Controllers;
 
 use Core\View;
+use App\Models\Post;
 
 
 class PostsController extends \Core\Controller
 {
     public function index()
     {
+        // appel de la méthode getAll du modèle pour récupérer
+        // toutes les données de la table posts
+        $posts = Post::getAll();
         View::render("Posts/index.phtml", [
-            "posts" => [
-                "Titre de l'article 1",
-                "Titre de l'article 2",
-                "Titre de l'article 3"
-            ]
+            "posts" => $posts
         ]);
     }
 

@@ -24,7 +24,8 @@
 
   <ul>
     <?php foreach ($posts as $post): ?>
-      <li><?= htmlspecialchars($post) ?></li>
+      <h2><?= htmlspecialchars($post['title']) ?></h2>
+      <p><?= $post['content'] ?></p>
       <?php endforeach; ?>
   </ul>
 </body>
