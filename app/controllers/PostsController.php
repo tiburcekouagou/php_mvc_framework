@@ -2,14 +2,20 @@
 
 namespace App\Controllers;
 
+use Core\View;
+use App\Models\Post;
+
 
 class PostsController extends \Core\Controller
 {
     public function index()
     {
-        echo "<pre>";
-        echo "Hello depuis la fonction index() du controlleur PostsControlleur";
-        var_dump($this->route_params);
+        // appel de la méthode getAll du modèle pour récupérer
+        // toutes les données de la table posts
+        $posts = Post::getAll();
+        View::render("Posts/index.phtml", [
+            "posts" => $posts
+        ]);
     }
 
     public function addNew()

@@ -93,7 +93,8 @@ namespace Core;
         if($this->match($url)) {
             $controller = $this->params["controller"];
             $controller = $this->convertToStudlyCase($controller) . "Controller";
-            $controller = "App\Controllers\\" . $controller;
+            // $controller = "App\Controllers\\" . $controller;
+            $controller = $this->getNamespace() . $controller;
             
             if (class_exists($controller)) {
                 // instancier le controlleur et lui passer les paramètres
@@ -152,5 +153,15 @@ namespace Core;
         }
 
         return $url;
+    }
+
+    protected function getNamespace() {
+        $namespace = "App\Controllers\\";
+
+        if (array_key_exists("namespace", $this->params)) {
+            $namespace .= $this->params["namespace"] . "\\";
+        }
+
+        return $namespace;
     }
  }
