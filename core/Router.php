@@ -113,7 +113,7 @@ class Router {
             }
         } else {
             // echo "Aucune route ne correspond à \"$url\"";
-            throw new \Exception("Aucune route ne correspond à \"$url\"");
+            throw new \Exception("Aucune route ne correspond à \"$url\"", 404);
         }
     }
 

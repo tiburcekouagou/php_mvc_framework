@@ -6,3 +6,31 @@ Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
 Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('favicon.ico')
 #1 {main}
 Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 12:55:03 UTC] Fatal error with message 'Aucune route ne correspond à "posts/index/sdf"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index/sdf')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 12:55:03 UTC] Fatal error with message 'Aucune route ne correspond à "favicon.ico"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('favicon.ico')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 12:56:16 UTC] Fatal error with message 'Aucune route ne correspond à "posts/index/sdf"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index/sdf')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 12:56:25 UTC] Fatal error with message 'Aucune route ne correspond à "posts/index/"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index/')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 12:57:13 UTC] Fatal error with message '../app/View/Posts/index.phtml non trouvé'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\app\controllers\PostsController.php(16): Core\View::render('Posts/index.pht...', Array)
+#1 C:\laragon\www\php_mvc_framework\core\Router.php(105): App\Controllers\PostsController->index()
+#2 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index')
+#3 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\View.php'on line 27
+[05-Jan-2023 12:57:33 UTC] Fatal error with message '../app/View/Posts/index.phtml non trouvé'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\app\controllers\PostsController.php(16): Core\View::render('Posts/index.pht...', Array)
+#1 C:\laragon\www\php_mvc_framework\core\Router.php(105): App\Controllers\PostsController->index()
+#2 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index')
+#3 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\View.php'on line 27
