@@ -28,4 +28,11 @@ class Config {
    * @var string
    */
   const DB_PASSWORD = 'root';
+  /**
+   * Afficher ou cacher les erreurs
+   * si l'application est en production, définir SHOW_ERRORS = false
+   * si l'application est en local, définir SHOW_ERRORS = true
+   * @var bool
+   */
+  const SHOW_ERRORS = false;
 }

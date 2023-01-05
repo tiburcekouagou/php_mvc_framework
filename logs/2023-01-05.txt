@@ -1,0 +1,8 @@
+[05-Jan-2023 12:46:20 UTC] Fatal error with message 'Aucune route ne correspond à "posts/index/sdf"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index/sdf')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 12:46:21 UTC] Fatal error with message 'Aucune route ne correspond à "favicon.ico"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('favicon.ico')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
