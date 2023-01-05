@@ -3,7 +3,7 @@
 namespace Core;
 
 use PDO;
-use Database\Config;
+use Config\Config;
 
 abstract class Model {
   protected static function getDB() {

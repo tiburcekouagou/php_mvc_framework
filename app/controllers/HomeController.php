@@ -12,5 +12,4 @@ class HomeController extends \Core\Controller {
             "couleurs" => ["vert", "jaune", "rouge"]
         ]);
     }
-
 }

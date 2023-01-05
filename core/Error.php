@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Database\Config;
+use Config\Config;
 
 /**
  * Gestionnaire d'erreur et d'exception
@@ -38,7 +38,7 @@ class Error {
     }
     http_response_code($code);
 
-    if (Config::SHOW_ERRORS) {
+    if (Config::ENVIRONMENT === 'local') {
       echo "<h1>Fatal error</h1>";
       echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
       echo "<p>Message: '" . $exception->getMessage() . "'</p>";

@@ -42,3 +42,23 @@ Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
 Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('sdf')
 #1 {main}
 Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 13:11:43 UTC] Fatal error with message 'Aucune route ne correspond à "favicon.ico"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('favicon.ico')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 13:11:48 UTC] Fatal error with message 'Aucune route ne correspond à "sdf"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('sdf')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 13:12:04 UTC] Fatal error with message 'Aucune route ne correspond à "sd"'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('sd')
+#1 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\core\Router.php'on line 116
+[05-Jan-2023 13:12:06 UTC] Fatal error with message 'foreach() argument must be of type array|object, null given'
+Stack trace: #0 C:\laragon\www\php_mvc_framework\app\Views\Posts\index.phtml(26): Core\Error::errorHandler(2, 'foreach() argum...', 'C:\\laragon\\www\\...', 26)
+#1 C:\laragon\www\php_mvc_framework\core\View.php(25): require('C:\\laragon\\www\\...')
+#2 C:\laragon\www\php_mvc_framework\app\Controllers\PostsController.php(15): Core\View::render('Posts/index.pht...', Array)
+#3 C:\laragon\www\php_mvc_framework\core\Router.php(105): App\Controllers\PostsController->index()
+#4 C:\laragon\www\php_mvc_framework\public\index.php(28): Core\Router->dispatch('posts/index')
+#5 {main}
+Thrown in 'C:\laragon\www\php_mvc_framework\app\Views\Posts\index.phtml'on line 26
